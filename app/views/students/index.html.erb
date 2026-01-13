@@ -1,0 +1,102 @@
+<style>
+  .notice-msg {
+    color: #0f5132;
+    background: #d1e7dd;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+  }
+
+  #students {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .student-card {
+    padding: 15px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    box-shadow: 
+      6px 6px 12px #cfcfcf,
+      -6px -6px 12px #ffffff;
+    transition: all 0.3s ease;
+  }
+
+  .student-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+      10px 10px 20px #c5c5c5,
+      -10px -10px 20px #ffffff;
+  }
+
+  .student-card p {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .student-card a {
+    text-decoration: none;
+    color: #4a90e2;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #4a90e2;
+    transition: all 0.3s ease;
+  }
+
+  .student-card a:hover {
+    background-color: #4a90e2;
+    color: white;
+  }
+
+  .new-student-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 18px;
+    background: linear-gradient(145deg, #4a90e2, #357abd);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 
+      4px 4px 8px #2f5f94,
+      -4px -4px 8px #5fa6ff;
+    transition: all 0.3s ease;
+  }
+
+  .new-student-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(145deg, #357abd, #4a90e2);
+    box-shadow: 
+      6px 6px 12px #2f5f94,
+      -6px -6px 12px #5fa6ff;
+  }
+</style>
+
+<p class="notice-msg"><%= notice %></p>
+
+<% content_for :title, "Students" %>
+
+<h1>Students</h1>
+
+<div id="students">
+  <% @students.each do |student| %>
+    <div class="student-card">
+      <%= render student %>
+      <p>
+        <%= link_to "Show this student", student %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New student", new_student_path, class: "new-student-btn" %>

@@ -1,0 +1,120 @@
+<style>
+  .student-form {
+    width: 380px;
+    margin: 30px auto;
+    padding: 25px;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    border-radius: 12px;
+    box-shadow: 
+      6px 6px 12px #cfcfcf,
+      -6px -6px 12px #ffffff;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .student-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+      10px 10px 20px #c5c5c5,
+      -10px -10px 20px #ffffff;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 9px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    background: #fdfdfd;
+    transition: all 0.3s ease;
+    box-shadow: inset 2px 2px 5px #e0e0e0,
+                inset -2px -2px 5px #ffffff;
+  }
+
+  .form-group input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 6px rgba(74,144,226,0.6);
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(145deg, #4a90e2, #357abd);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px #2f5f94,
+                -3px -3px 6px #5fa6ff;
+    transition: all 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(145deg, #357abd, #4a90e2);
+    box-shadow: 5px 5px 10px #2f5f94,
+                -5px -5px 10px #5fa6ff;
+  }
+
+  .error-box {
+    background: #ffe0e0;
+    color: #a80000;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ffb3b3;
+  }
+</style>
+
+<%= form_with(model: student, class: "student-form") do |form| %>
+  
+  <% if student.errors.any? %>
+    <div class="error-box">
+      <h3><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h3>
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "Enter name" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :branch %>
+    <%= form.text_field :branch, placeholder: "Enter branch" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :age %>
+    <%= form.number_field :age, placeholder: "Enter age" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, placeholder: "Enter gender" %>
+  </div>
+
+  <div>
+    <%= form.submit "Save Student", class: "submit-btn" %>
+  </div>
+
+<% end %>

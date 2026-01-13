@@ -1,0 +1,59 @@
+<style>
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .new-container {
+    width: 420px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    box-shadow:
+      6px 6px 12px #cfcfcf,
+      -6px -6px 12px #ffffff;
+    transition: all 0.3s ease;
+  }
+
+  .new-container:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      10px 10px 20px #c5c5c5,
+      -10px -10px 20px #ffffff;
+  }
+
+  .new-actions {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .new-actions a {
+    text-decoration: none;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .new-actions a:hover {
+    background-color: #4a90e2;
+    color: white;
+    transform: scale(1.05);
+  }
+</style>
+
+<% content_for :title, "New student" %>
+
+<h1>New Student</h1>
+
+<div class="new-container">
+  <%= render "form", student: @student %>
+
+  <div class="new-actions">
+    <%= link_to "Back to students", students_path %>
+  </div>
+</div>

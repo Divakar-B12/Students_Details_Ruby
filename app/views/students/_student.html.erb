@@ -1,0 +1,56 @@
+<style>
+  .student-card {
+    padding: 18px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    box-shadow:
+      6px 6px 12px #cfcfcf,
+      -6px -6px 12px #ffffff;
+    transition: all 0.3s ease;
+    font-family: Arial, sans-serif;
+  }
+
+  .student-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      10px 10px 20px #c5c5c5,
+      -10px -10px 20px #ffffff;
+  }
+
+  .student-field {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .student-field strong {
+    color: #333;
+    width: 80px;
+    display: inline-block;
+  }
+
+  .student-field span {
+    color: #555;
+  }
+</style>
+
+<div id="<%= dom_id student %>" class="student-card">
+  <div class="student-field">
+    <strong>Name:</strong>
+    <span><%= student.name %></span>
+  </div>
+
+  <div class="student-field">
+    <strong>Branch:</strong>
+    <span><%= student.branch %></span>
+  </div>
+
+  <div class="student-field">
+    <strong>Age:</strong>
+    <span><%= student.age %></span>
+  </div>
+
+  <div class="student-field">
+    <strong>Gender:</strong>
+    <span><%= student.gender %></span>
+  </div>
+</div>
